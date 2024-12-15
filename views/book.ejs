@@ -1,0 +1,56 @@
+<%- include('layout/header')  %>
+
+<div class="container my-auto">
+    <div class="row text-center" style="margin-top: 150px;">
+        <div class="col-lg-6">
+            <img src="<%= book.image %>" alt="book Image" class="width-100 bg-secondary">
+        </div>
+        <div class="col-lg-6 text-start">
+            <h1><%= book.bookName %></h1>
+            <p><%= book.description %></p>
+            <p><b>Author of the book: </b><%= book.author %></p>
+            <a href="/books" class="btn btn-success btn-padding rounded-30 shadow-none">Home</a>
+            <a href="/books/<%= book.id %>/delete" class="btn btn-danger btn-padding rounded-30 shadow-none">Delete Book</a>
+
+            <!-- book rating -->
+            <p>Ratings: <%= averageRating.toFixed(1) %>/5 (<%= numberOfRatings %>)</p>
+
+            <h3>Rate This Book:</h3>
+            <form action="/books/<%= book.id %>/ratings" method="POST">
+                <input type="hidden" name="bookId" value="<%= book.id %>">
+                <input type="hidden" name="rating" id="rating">
+                <div class="stars">
+                <input type="radio" id="star5" name="star" value="5" onclick="setRating(5)">
+                <label for="star5">★</label>
+                <input type="radio" id="star4" name="star" value="4" onclick="setRating(4)">
+                <label for="star4">★</label>
+                <input type="radio" id="star3" name="star" value="3" onclick="setRating(3)">
+                <label for="star3">★</label>
+                <input type="radio" id="star2" name="star" value="2" onclick="setRating(2)">
+                <label for="star2">★</label>
+                <input type="radio" id="star1" name="star" value="1" onclick="setRating(1)">
+                <label for="star1">★</label>
+                </div>
+                <button type="submit">Submit Rating</button>
+            </form>
+
+            <form action="/books/<%= book.id %>/reviews" method="POST">
+                <label for="review">Book Title</label>
+                <input type="text" name="review" class="form-control form-control-lg" placeholder="Add your comment" required />
+                <button type="submit" class="btn btn-primary btn-lg">Send</button>
+            </form>
+            
+            <% if (book.Reviews.length > 0) { %>
+                <div>
+                    <% book.Reviews.forEach(review => { %>
+                        <div><%= review.review %></div>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <div>No reviews yet.</div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('layout/footer')  %>
