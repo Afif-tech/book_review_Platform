@@ -2,7 +2,7 @@ const { Sequelize } = require("sequelize");
 const { bookmodel } = require("./books");
 const { ratingModel } = require("./rating");
 const { reviewModel } = require("./review");
-require("dotenv").config
+require("dotenv").config;
 
 const db = new Sequelize({
     host: process.env.DB_HOST,

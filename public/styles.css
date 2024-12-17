@@ -22,3 +22,19 @@ body {
 .pl-50px {
     padding-left: 50px;
 }
+
+.bg-blue-custom {
+    background-color: #3D5A80;
+}
+
+.btn-orange-custom {
+    background-color: #EE6C4D;
+}
+
+.btn-dark-custom {
+    background-color: #293241;
+}
+
+.shadow-custom {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
