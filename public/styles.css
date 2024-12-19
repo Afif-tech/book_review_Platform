@@ -1,5 +1,10 @@
 body {
     background-color: #C9EEE7;
+    font-family: 'Euclid Circular B', sans-serif;
+}
+
+p {
+    font-size: 1.15rem;
 }
 
 .btn-padding {
@@ -14,6 +19,10 @@ body {
     border-radius: 30px !important
 }
 
+.rounded-15 {
+    border-radius: 15px !important
+}
+
 .width-100 {
     width: 300px;
     height: 500px;
@@ -25,16 +34,83 @@ body {
 
 .bg-blue-custom {
     background-color: #3D5A80;
+    height: 100%;
 }
 
 .btn-orange-custom {
     background-color: #EE6C4D;
 }
 
+.btn-orange-custom:hover {
+    background-color: #CF1F12 !important;
+}
+
 .btn-dark-custom {
     background-color: #293241;
 }
 
+.btn-dark-custom:hover {
+    background-color: #0b0d13;
+}
+
 .shadow-custom {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.pt-custom {
+    padding-top: 5rem;
+}
+
+.rounded-top {
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+}
+
+.custom-header-color {
+    background-color: #C9C9EE;
+}
+
+.stars input[type="radio"] {
+    display: none;
+}
+
+.stars .fa-star {
+    font-size: 24px;
+    color: white; /* Default white color */
+    cursor: pointer;
+}
+
+.stars .fa-star.checked {
+    color: yellow; /* Highlighted color */
+}
+
+.borderless {
+    border: none;
+}
+
+.w-25px {
+    width: 25px;
+}
+
+.end-0 {
+    right: 0 !important;
+}
+
+.top-home-0 {
+    top: -95px !important;
+    left: -700px !important
+}
+
+.delete-position {
+    bottom: -30px;
+    right: 0;
+}
+
+.submit-position {
+    top: -7px;
+    right: -80px;
+}
+
+.display-4-half {
+    font-size: 1.5rem;
 }

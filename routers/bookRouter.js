@@ -8,7 +8,7 @@ const router = Router();
 // Create new book
 router.route("/add").post( upload, async (req, res) => {   
     try {
-        console.log(req.body);
+        //console.log(req.body);
         const book = new Book({
             bookName: req.body.bookName,
             description: req.body.description,
@@ -34,7 +34,7 @@ router.route("/add").get( (req, res) => {
 
 // View book by ID
 router.route("/:id").get(async (req, res) => {
-    console.log(`Fetching book with ID: ${req.params.id}`);
+    //console.log(`Fetching book with ID: ${req.params.id}`);
     const id = req.params.id;
   
     try {
@@ -52,7 +52,7 @@ router.route("/:id").get(async (req, res) => {
       if (!book) {
         return res.redirect("/");
       }
-      console.log(book)
+      //console.log(book)
       // Calculate average rating using Sequelize methods (optional)
       const averageRating = book.Ratings?.length
             ? book.Ratings.reduce((acc, rating) => acc + rating.dataValues.rating, 0) / book.Ratings.length
@@ -62,8 +62,8 @@ router.route("/:id").get(async (req, res) => {
         where: {bookId: id}
       })
             
-      console.log(`Average rating: ${averageRating}`)
-      console.log("Ratings:", book.Ratings.map(r => r.dataValues));
+      //console.log(`Average rating: ${averageRating}`)
+      //console.log("Ratings:", book.Ratings.map(r => r.dataValues));
 
       res.render("book", {
         book,

@@ -31,6 +31,6 @@ app.set('view engine', 'ejs');
 
 app.use("/books", router);
 app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}`)
+    console.log(`Server is running on port http://localhost:${PORT}/books`)
     db.sync();
 })

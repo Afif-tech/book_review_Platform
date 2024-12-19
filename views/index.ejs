@@ -1,18 +1,18 @@
 <%- include('layout/header')  %>
 
-<div class="container text-center pt-4">
+<div class="container text-center mt-4 pt-4 ">
     <h1>Book Reviews</h1>
-    <div class="text-start">
-        <a href="/books/add" class="btn btn-orange-custom btn-padding rounded-30 shadow-none">Add Book Review</a>
+    <div class="text-left">
+        <a href="/books/add" class="btn btn-orange-custom btn-padding rounded-30 shadow-none text-white">Add Book Review</a>
         <a href="/books" class="btn btn-dark-custom btn-padding rounded-30 text-white">Filter</a>
     </div>
     <div class="row mt-4">
         <% if (books && books.length > 0) { %>
             <% books.forEach(books => { %>
                 <div class="col-md-4 mb-4">
-                    <div class="bg-blue-custom text-white p-3 rounded-30 shadow-custom">
+                    <div class="bg-blue-custom text-white p-3 rounded-15 shadow-custom">
                         <a href="/books/<%= books.id %>"><img src="<%= books.image %>" alt="book Image" class="width-100 pt-4"></a>
-                        <div class="text-start pt-4 pl-50px">
+                        <div class="text-left pt-4">
                             <h2><%= books.bookName %></h2>
                             <p><%= books.author %></p>
                         </div>

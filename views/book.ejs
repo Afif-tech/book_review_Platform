@@ -1,49 +1,54 @@
 <%- include('layout/header')  %>
 
-<div class="container my-auto">
-    <div class="row text-center" style="margin-top: 150px;">
-        <div class="col-lg-6">
+<div class="container my-auto position-relative">
+    <div class="row" style="margin-top: 150px;">
+        <div class="col-lg-6 text-center">
             <img src="<%= book.image %>" alt="book Image" class="width-100 bg-secondary">
+            <div class="mb-4 mt-4">
+                <a href="/books/<%= book.id %>/delete" class="btn btn-danger btn-padding rounded-30 shadow-none">Delete Book</a>
+            </div>
         </div>
-        <div class="col-lg-6 text-start">
+        <div class="col-lg-6 mt-xl-0 mt-4">
             <h1><%= book.bookName %></h1>
             <p><%= book.description %></p>
             <p><b>Author of the book: </b><%= book.author %></p>
-            <a href="/books" class="btn btn-success btn-padding rounded-30 shadow-none">Home</a>
-            <a href="/books/<%= book.id %>/delete" class="btn btn-danger btn-padding rounded-30 shadow-none">Delete Book</a>
+            <p><b>Ratings:</b> <span class="text-warning"><b><%= averageRating.toFixed(1) %></b></span> / 5 (<%= numberOfRatings %>)</p>
+            <div class="mb-4 position-absolute top-home-0">
+                <a href="/books" class="btn btn-success btn-padding rounded-30 shadow-none">Home</a>
+            </div>
 
-            <!-- book rating -->
-            <p>Ratings: <%= averageRating.toFixed(1) %>/5 (<%= numberOfRatings %>)</p>
+            <div class="d-flex align-items-top">
+                <div class="mr-3"><h3>Rate This Book:</h3></div>
+                <form action="/books/<%= book.id %>/ratings" method="POST" class="mt-1 text-center d-flex position-relative">
+                    <input type="hidden" name="bookId" value="<%= book.id %>">
+                    <input type="hidden" name="rating" id="rating">
+                    <div class="stars mr-3">
+                    <input type="radio" id="star1" name="star" value="1" onclick="setRating(1)">
+                    <label for="star1"><span class="fa fa-star checked"></span></label>
+                    <input type="radio" id="star2" name="star" value="2" onclick="setRating(2)">
+                    <label for="star2"><span class="fa fa-star checked"></span></label>
+                    <input type="radio" id="star3" name="star" value="3" onclick="setRating(3)">
+                    <label for="star3"><span class="fa fa-star checked"></span></label>
+                    <input type="radio" id="star4" name="star" value="4" onclick="setRating(4)">
+                    <label for="star4"><span class="fa fa-star checked"></span></label>
+                    <input type="radio" id="star5" name="star" value="5" onclick="setRating(5)">
+                    <label for="star5"><span class="fa fa-star checked"></span></label>
+                    </div>
+                    <button type="submit" class="btn btn-success rounded-30 shadow-none position-absolute submit-position">Submit</button>
+                </form>
+            </div>
 
-            <h3>Rate This Book:</h3>
-            <form action="/books/<%= book.id %>/ratings" method="POST">
-                <input type="hidden" name="bookId" value="<%= book.id %>">
-                <input type="hidden" name="rating" id="rating">
-                <div class="stars">
-                <input type="radio" id="star5" name="star" value="5" onclick="setRating(5)">
-                <label for="star5">★</label>
-                <input type="radio" id="star4" name="star" value="4" onclick="setRating(4)">
-                <label for="star4">★</label>
-                <input type="radio" id="star3" name="star" value="3" onclick="setRating(3)">
-                <label for="star3">★</label>
-                <input type="radio" id="star2" name="star" value="2" onclick="setRating(2)">
-                <label for="star2">★</label>
-                <input type="radio" id="star1" name="star" value="1" onclick="setRating(1)">
-                <label for="star1">★</label>
-                </div>
-                <button type="submit">Submit Rating</button>
-            </form>
-
-            <form action="/books/<%= book.id %>/reviews" method="POST">
-                <label for="review">Book Title</label>
-                <input type="text" name="review" class="form-control form-control-lg" placeholder="Add your comment" required />
-                <button type="submit" class="btn btn-primary btn-lg">Send</button>
+            <form action="/books/<%= book.id %>/reviews" method="POST" class="mt-4 d-flex position-relative">
+                <input type="text" name="review" class="form-control form-control-lg borderless bg-light text-black" placeholder="Add comment" required />
+                <button type="submit" class="btn bg-transparent btn-lg position-absolute end-0">
+                    <img src="/images/image.png"/ class="w-25px">
+                </button>
             </form>
             
             <% if (book.Reviews.length > 0) { %>
                 <div>
                     <% book.Reviews.forEach(review => { %>
-                        <div><%= review.review %></div>
+                        <div class="display-4-half bg-transparent mt-4 ml-4 text-black"><%= review.review %></div>
                     <% }) %>
                 </div>
             <% } else { %>

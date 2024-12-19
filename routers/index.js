@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     try {
         // Assuming db.query returns an array of rows as the second element of the result tuple
         const [books] = await db.query('SELECT * FROM books');
-        console.log("Books fetched from DB:", books);
+        //console.log("Books fetched from DB:", books);
         res.render('index', { books });
     } catch (err) {
         res.json({ message: err.message });
