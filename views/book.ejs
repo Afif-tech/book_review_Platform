@@ -14,7 +14,7 @@
             <p><b>Author of the book: </b><%= book.author %></p>
             <p><b>Ratings:</b> <span class="text-warning"><b><%= averageRating.toFixed(1) %></b></span> / 5 (<%= numberOfRatings %>)</p>
             <div class="mb-4 position-absolute top-home-0">
-                <a href="/books" class="btn btn-success btn-padding rounded-30 shadow-none">Home</a>
+                <a href="/books" class="btn btn-success-custom btn-padding rounded-30 shadow-none text-white">< Home</a>
             </div>
 
             <div class="d-flex align-items-top">
@@ -34,7 +34,7 @@
                     <input type="radio" id="star5" name="star" value="5" onclick="setRating(5)">
                     <label for="star5"><span class="fa fa-star checked"></span></label>
                     </div>
-                    <button type="submit" class="btn btn-success rounded-30 shadow-none position-absolute submit-position">Submit</button>
+                    <button type="submit" class="btn btn-success-custom rounded-30 shadow-none position-absolute submit-position text-white">Submit</button>
                 </form>
             </div>
 

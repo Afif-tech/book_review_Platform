@@ -53,7 +53,7 @@ router.route("/:id").get(async (req, res) => {
         return res.redirect("/");
       }
       //console.log(book)
-      // Calculate average rating using Sequelize methods (optional)
+      // Calculate average rating using Sequelize methods
       const averageRating = book.Ratings?.length
             ? book.Ratings.reduce((acc, rating) => acc + rating.dataValues.rating, 0) / book.Ratings.length
             : 0;
@@ -77,26 +77,12 @@ router.route("/:id").get(async (req, res) => {
 });
 
 // Post Ratings
-// router.route("/:id").post( async (req, res) => {
-//     const bookId = req.body.bookId;
-//     const rating = req.body.rating;
-  
-//     try {
-//       await pool.query('INSERT INTO ratings (book_id, rating) VALUES (?, ?)', [bookId, rating]);
-//       res.redirect(`/books/${bookId}`); // Redirect to specific book page
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).send('Error rating book');
-//     }
-// });
-
-// Post Ratings
 router.route("/:id/ratings").post(async (req, res) => {
     const { rating } = req.body;
     const bookId = req.params.id;
 
     try {
-        // Use Sequelize ORM to insert a new rating
+        
         await Rating.create({ bookId, rating });
 
         // Redirect to the book's page

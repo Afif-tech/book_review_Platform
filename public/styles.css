@@ -76,12 +76,12 @@ p {
 
 .stars .fa-star {
     font-size: 24px;
-    color: white; /* Default white color */
+    color: white;
     cursor: pointer;
 }
 
 .stars .fa-star.checked {
-    color: yellow; /* Highlighted color */
+    color: yellow; 
 }
 
 .borderless {
@@ -94,6 +94,7 @@ p {
 
 .end-0 {
     right: 0 !important;
+    top: -5px;
 }
 
 .top-home-0 {
@@ -113,4 +114,38 @@ p {
 
 .display-4-half {
     font-size: 1.5rem;
+}
+
+.btn-success-custom {
+    background-color: darkcyan;
+}
+
+.fa-magnifying-glass {
+    font-size: 1.2em; 
+    color: #000; 
+}
+
+.r-0 {
+    right: 0;
+}
+
+#searchInput::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+#filterSelect {
+    background-color: darkcyan;
+    color: white;
+}
+
+#filterSelect:focus {
+    background-color: black;
+    color: white;
+    outline: none;
+}
+
+#filterSelect option {
+    background-color: darkcyan;
+    color: white;
 }

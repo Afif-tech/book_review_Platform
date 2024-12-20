@@ -1,17 +1,37 @@
 <%- include('layout/header')  %>
 
 <div class="container text-center mt-4 pt-4 ">
-    <h1>Book Reviews</h1>
-    <div class="text-left">
-        <a href="/books/add" class="btn btn-orange-custom btn-padding rounded-30 shadow-none text-white">Add Book Review</a>
-        <a href="/books" class="btn btn-dark-custom btn-padding rounded-30 text-white">Filter</a>
+    <h1 class="mb-4">Book Reviews</h1>
+    
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <a href="/books/add" class="btn btn-orange-custom btn-padding rounded-30 shadow-none text-white">Add Book Review</a>
+        </div>
+
+        <div class="d-flex">
+            <form id="filterForm" class="d-flex mr-2">
+                <select id="filterSelect" class="form-control d-inline-block w-auto borderless rounded-15 text-white" onchange="filterBooks()">
+                    <option value="">Sort</option>
+                    <option value="asc">A-Z</option>
+                    <option value="desc">Z-A</option>
+                </select>
+            </form>
+    
+            <form id="searchForm" class="d-flex position-relative">
+                <input type="text" id="searchInput" class="form-control borderless btn-success-custom rounded-15" placeholder="Search books">
+                <button type="button" class="btn bg-transparent position-absolute r-0" onclick="searchBooks()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
     </div>
-    <div class="row mt-4">
+
+    <div class="row mt-4" id="booksContainer">
         <% if (books && books.length > 0) { %>
             <% books.forEach(books => { %>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4 book-item" data-name="<%= books.bookName.toLowerCase() %>">
                     <div class="bg-blue-custom text-white p-3 rounded-15 shadow-custom">
-                        <a href="/books/<%= books.id %>"><img src="<%= books.image %>" alt="book Image" class="width-100 pt-4"></a>
+                        <a href="/books/<%= books.id %>">
+                            <img src="<%= books.image %>" alt="book Image" class="width-100 pt-4">
+                        </a>
                         <div class="text-left pt-4">
                             <h2><%= books.bookName %></h2>
                             <p><%= books.author %></p>
